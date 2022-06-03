@@ -1,38 +1,348 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,900;1,500&family=Poppins:ital,wght@0,300;0,500;1,700&family=Ubuntu:ital,wght@0,500;0,700;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* Login-Page */
+
+.btn-primary{
+  padding: 6%
+}
+
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #6a1b9a, #7b1fa2, #8e24aa, #ab47bc, #ba68c8, #ce93d8);
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #6a1b9a, #7b1fa2, #8e24aa, #ab47bc,#ba68c8, #ce93d8 );
+  }
+  
+  @media (min-width: 768px) {
+    .gradient-form {
+      height: 100vh !important;
+    }
+  }
+  @media (min-width: 769px) {
+    .gradient-custom-2 {
+      border-top-right-radius: .3rem;
+      border-bottom-right-radius: .3rem;
+    }
+  }
+
+ 
+
+body {
+  overflow-x: hidden;
+  font-family: 'Quicksand';
+  font-size: 115%;
+}
+
+hr{
+    height:2px;
+    border-width: 0;
+    /* color:gray; */
+    background-color:gray;
+    margin-top: 3rem;
+}
+
+
+
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 76%;
+  position: absolute;
+  /* margin-right: 0;
+  margin-top: 4rem; */
+  margin: 4rem 3.5rem auto 3rem;
+  /* font-size: 15px; */
+}
+
+.content-fluid{
+    /* margin: 4rem 3.5rem auto 3rem; */
+    /* margin-left: 3rem; */
+}
+
+.content-area{
+}
+
+h2{
+    padding-bottom: 1.5rem;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+
+  /*Navigation Bar Title*/
+
+.navbar-title {
+  font-size: 80%;
+  margin-left: 2.5rem;
+  font-weight: bold;
+}
+
+
+
+/* Sidebar Styles */
+
+/* #sidebar {
+z-index: 1000;
+position: fixed;
+left: 250px;
+width: 270px;
+height: 100%;
+margin-left: -250px;
+overflow-y: auto;
+// background: #251D3A; 
+background: #1D1125;
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+
+#sidebar header {
+background-color: #1D1125;
+font-size: 150%;
+line-height: 5rem;
+text-align: center;
+}
+
+#sidebar header a {
+color: #fff;
+display: block;
+text-decoration: none;
+font-weight: bolder;
+}
+
+
+#sidebar .nav{
+min-height: fit-content;
+font-family: 'Quicksand';
+font-weight: 600;
+}
+
+#sidebar .nav a{
+background: none;
+color: #A4A6B3;
+font-size: 78%;
+padding: 16px 24px;
+}
+
+#sidebar .nav a:hover{
+color: white;
+text-decoration:none;
+}
+
+#sidebar .nav a i{
+margin-right: 20px;
+margin-top: 25px;
+}
+
+.profile-sec{
+  margin-top: 15%;
+}
+
+.section-heading{
+font-family: "Poppins";
+font-weight: bolder;
+}
+
+#mI{
+margin-left: 4rem;
+}
+
+#gES{
+margin-left: 3.8rem;
+}
+
+/*Navigation Bar Button*/
+
+/* .navbar-title{
+display: flex;
+justify-content: space-between;
+}
+
+.nav-buttons-grp{
+float: right;
+} */
+
+/*.nav-button-1{
+  margin-left: 60%;
+  margin-right: 2%;
+  
+}
+
+.btn-primary {
+  width: 20%;
+  border-radius: 8px;
+  background-color: #FFB259;
+}
+
+.btn-primary:hover{
+  background-color:#fc9012;
+}
+
+.btn-secondary{
+  width: 12%;
+  border-radius: 8px;
+  background-color:#1D1125;
+  
+}
+
+.btn-secondary:hover{
+  background-color:#6911a6;
+} */
+
+
+/* AddOns on Top Right */
+
+/* .user-image{
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 2px;
+  width: 50px;
+  height: 50px;
+}
+
+.support-text{
+  margin-right: 2rem;
+  color: #7D7D7D;
+  font-weight: 500;
+}
+
+.add-on{
+  margin-left: 68%;
+  float: right;
+}
+
+.section-heading{
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.above-navbar{
+  margin-bottom: 2rem;
+}
+
+/*Card*/
+
+/*.card{
+  width: 16rem;
+  margin-left: 3rem;
+  margin: 1rem auto 2rem 3rem;
+  // border: 2px solid red; 
+  border-radius: 10px;
+  box-shadow: 5px 4px 35px 2px rgba(0, 0, 0, 0.11);
+}
+
+.card:hover{
+  opacity:0.7;
+}
+
+.card-text{
   text-align: center;
+  font-size: large;
+  font-family: 'Poppins';
+  font-weight: 500;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card-img-top{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+// TrackBar Styling 
+
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  color: #455A64;
+  padding-left: 0px;
+  margin-top: 30px
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#progressbar li {
+  list-style-type: none;
+  font-size: 13px;
+  width: 33.33%;
+  float: left;
+  position: relative;
+  font-weight: 400;
+  color: #455A64 !important;
+  
 }
 
-.App-link {
-  color: #61dafb;
+#progressbar #step1:before {
+  content: "1";
+  color: #fff;
+  width: 29px;
+  margin-left: 15px !important;
+  padding-left: 11px !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+#progressbar #step2:before {
+  content: "2";
+  color: #fff;
+  width: 29px;
+
 }
+
+#progressbar #step3:before {
+  content: "3";
+  color: #fff;
+  width: 29px;
+  margin-right: 15px !important;
+  padding-right: 11px !important;
+}
+
+#progressbar li:before {
+  line-height: 29px;
+  display: block;
+  font-size: 12px;
+  background: #455A64 ;
+  border-radius: 50%;
+  margin: auto;
+}
+
+#progressbar li:after {
+  content: '';
+  width: 121%;
+  height: 2px;
+  background: #455A64;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 15px;
+  z-index: -1;
+} 
+
+#progressbar li:nth-child(2):after {
+  left: 50%;
+}
+
+#progressbar li:nth-child(1):after {
+  left: 25%;
+  width: 121%;
+}
+#progressbar li:nth-child(3):after {
+  left: 25% !important;
+  width: 50% !important;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #4bb8a9; 
+} */
