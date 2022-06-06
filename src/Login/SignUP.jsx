@@ -1,4 +1,5 @@
 import React from "react";
+import "./Login.css";
 
 export default function SignUp()
 {
@@ -25,10 +26,7 @@ export default function SignUp()
                           
                         </div>
                         
-                        <div class="form-outline mb-4">
-                            <input type="number" id="form2Example12" class="form-control" placeholder="Mobile number"/>
-                            
-                        </div>
+                  
 
                         <div class="form-outline mb-4">
             

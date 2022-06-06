@@ -1,4 +1,5 @@
 import React from "react";
+import "./Login.css";
 
 export default function Login()
 {
@@ -29,11 +30,23 @@ export default function Login()
 														type="email"
 														id="form2Example11"
 														class="form-control"
-														placeholder="Email"
+														placeholder="email"
 													/>
 												</div>
 
-												<p style={{textAlign: "center", marginTop: "0"}}> OR </p>
+												<div class="form-outline mb-4">
+													<label class="form-label" for="form2Example11">
+														Password :
+													</label>
+													<input
+														type="password"
+														id="form2Example11"
+														class="form-control"
+														placeholder="password"
+													/>
+												</div>
+
+												{/* <p style={{textAlign: "center", marginTop: "0"}}> OR </p>
 
 												<button
 													type="button"
@@ -45,7 +58,7 @@ export default function Login()
 														style={{marginRight: "5%"}}
 													></i>
 													Connect with Google
-												</button>
+												</button> */}
 
 												<div class="text-center pt-1 mb-5 pb-1">
 													<button
