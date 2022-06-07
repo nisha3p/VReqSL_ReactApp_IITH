@@ -1,4 +1,5 @@
 import React from "react";
+import "./Trackbar.css"
 
 export default function TrackBar()
 {
