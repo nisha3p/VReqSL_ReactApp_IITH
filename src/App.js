@@ -9,6 +9,7 @@ import TrackBar from './Trackbar';
 import React from 'react';
 import Userstore from './store/Userstore';
 import {observer} from 'mobx-react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function viewScreen(index)
 {
@@ -56,7 +57,14 @@ function viewScreen(index)
 export default function App() {
   
 	return (
-    viewScreen(1)
+    // viewScreen(1)
+	<BrowserRouter >
+      <Routes >
+        <Route path="/" element={<Login />}/>
+        <Route path="/signUP" element={<SignUp />}/>
+		<Route path="/home" element={<Home />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
