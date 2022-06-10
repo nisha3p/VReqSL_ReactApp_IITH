@@ -12,7 +12,7 @@
     "mobx-react": "^7.5.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -46,7 +46,7 @@
     "url": "git+https://github.com/VHIL-interns-hub/VReqSL_ReactApp_summer2022.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nisha",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/VHIL-interns-hub/VReqSL_ReactApp_summer2022/issues"

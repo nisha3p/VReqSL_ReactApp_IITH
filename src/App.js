@@ -54,7 +54,7 @@ function viewScreen(index)
 export default function App() {
   
 	return (
-    viewScreen(1)
+    viewScreen(3)
   );
 }
 
