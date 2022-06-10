@@ -6,12 +6,14 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "chalk": "^5.0.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mobx": "^6.6.0",
     "mobx-react": "^7.5.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-script": "^2.0.5",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -50,6 +52,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/VHIL-interns-hub/VReqSL_ReactApp_summer2022/issues"
-  },
-  "homepage": "https://github.com/VHIL-interns-hub/VReqSL_ReactApp_summer2022#readme"
+  }
 }

@@ -13,11 +13,13 @@ import {observer} from 'mobx-react';
 function viewScreen(index)
 {
   if (index === 1)
+  {
 		return (
 			<div>
 				<Login />
 			</div>
 		);
+}
 	else if (index === 2)
 		return (
 			<div>
@@ -54,7 +56,7 @@ function viewScreen(index)
 export default function App() {
   
 	return (
-    viewScreen(2)
+    viewScreen(1)
   );
 }
 
