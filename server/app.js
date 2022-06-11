@@ -17,7 +17,7 @@ mongoose.connect(DB, {
 }).then(() => {
     console.log('connection successful');
 }).catch((err) => console.log(err));
-
+app.use(express.json());
 app.use(require('./router/auth'));
 app.listen(PORT, () => {
     console.log(`server is running at port no ${PORT}`)
