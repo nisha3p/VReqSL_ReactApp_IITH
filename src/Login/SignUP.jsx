@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Login.css";
 
 
@@ -56,12 +57,19 @@ export default function SignUp() {
                       </div>
 
                       <div class="text-center pt-1 mb-5 pb-1">
+                      <NavLink to="/home">
                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Sign Up</button>
+                      </NavLink>
+                        
                       </div>
 
                       <div class="d-flex align-items-center justify-content-center pb-4">
                         <p class="mb-0 me-2">Already have an account!</p>
-                        <button type="button" class="btn btn-outline-danger" style={{ marginLeft: "1rem" }}>Sign In</button>
+
+                        <NavLink to="/">
+                          <button type="button" class="btn btn-outline-danger" style={{ marginLeft: "1rem" }}>Sign In</button>
+                        </NavLink>
+                        
                       </div>
 
                     </form>

@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Login.css";
 
 export default function Login() {
 	const [user, setUser] = useState({
-		email: "", password: ""
+		email: "",
+		password: "",
 	});
 	let name, value;
 	const handleInputs = (event) => {
 		name = event.target.name;
 		value = event.target.value;
 		setUser({ ...user, [name]: value });
-	}
+	};
 	return (
 		<section class="h-100 gradient-form" style={{ backgroundColor: "#eee" }}>
 			<div class="container py-6 h-100">
@@ -28,7 +30,9 @@ export default function Login() {
 
 										<form>
 											<p style={{ fontSize: "200%" }}>Get Started</p>
-											<p style={{ fontSize: "150%", color: "#bdbdbd" }}>Sign In</p>
+											<p style={{ fontSize: "150%", color: "#bdbdbd" }}>
+												Sign In
+											</p>
 
 											<div class="form-outline mb-4">
 												<label class="form-label" for="form2Example11">
@@ -75,12 +79,15 @@ export default function Login() {
 												</button> */}
 
 											<div class="text-center pt-1 mb-5 pb-1">
-												<button
-													class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 signIn_btn"
-													type="button"
-												>
-													Sign In
-												</button>
+												<NavLink to="/home">
+													<button
+														class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 signIn_btn"
+														type="button"
+													>
+														Sign In
+													</button>
+												</NavLink>
+
 												<a class="text-muted" href="#!">
 													Forgot password?
 												</a>
@@ -88,13 +95,15 @@ export default function Login() {
 
 											<div class="d-flex align-items-center justify-content-center pb-4">
 												<p class="mb-0 me-2">Don't have an account?</p>
-												<button
-													type="button"
-													class="btn btn-outline-danger signUp_btn"
-													style={{ marginLeft: "1rem" }}
-												>
-													Sign Up
-												</button>
+												<NavLink to="/signUP">
+													<button
+														type="button"
+														class="btn btn-outline-danger signUp_btn"
+														style={{ marginLeft: "1rem" }}
+													>
+														Sign Up
+													</button>
+												</NavLink>
 											</div>
 										</form>
 									</div>
@@ -103,11 +112,10 @@ export default function Login() {
 									<div class="text-white px-3 py-4 p-md-5 mx-md-4">
 										<h4 class="mb-4">We are more than just a company</h4>
 										<p class="small mb-0">
-											Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed do eiusmod tempor incididunt ut labore et
-											dolore magna aliqua. Ut enim ad minim veniam, quis
-											nostrud exercitation ullamco laboris nisi ut aliquip ex
-											ea commodo consequat.
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+											sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+											ullamco laboris nisi ut aliquip ex ea commodo consequat.
 										</p>
 									</div>
 								</div>
