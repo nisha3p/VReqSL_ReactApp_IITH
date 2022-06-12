@@ -22,9 +22,9 @@ mongoose.connect(DB, {
 //userschema
 const User = require('../userSchema')
 //
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
     res.send(`Hello world from the server router js`)
-});
+});*/
 
 /* Using promises
 router.post('/register', (req, res) => {
@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
     //res.json({ message: req.body });
 
 });*/
-router.post('/register', async (req, res) => {
+router.post('/signUP', async (req, res) => {
     const { email, password, cpassword } = req.body;
     if (!email || !password || !cpassword) {
         return res.status(422).json({ error: "Please fill all the details" });
@@ -76,7 +76,7 @@ router.post('/register', async (req, res) => {
 });
 
 //login route
-router.post('/signin', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         let token;
         const { email, password } = req.body;

@@ -60,9 +60,9 @@ export default function App() {
     // viewScreen(1)
 	<BrowserRouter >
       <Routes >
-        <Route path="/" element={<Login />}/>
-        <Route path="/signUP" element={<SignUp />}/>
-		<Route path="/home" element={<Home />}/>
+        <Route exact path="/" element={<Login />}/>
+        <Route exact path="/signUP" element={<SignUp />}/>
+		<Route exact path="/home" element={<Home />}/>
       </Routes>
     </BrowserRouter>
   );

@@ -1,10 +1,13 @@
+import async from "hbs/lib/async";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 
 
 export default function SignUp() {
+  let navigate = useNavigate()
   const [user, setUser] = useState({
     email: "", password: "", cpassword: ""
   });
@@ -13,6 +16,31 @@ export default function SignUp() {
     name = event.target.name;
     value = event.target.value;
     setUser({ ...user, [name]: value });
+  }
+
+  const PostData = async (event) => {
+    event.preventDefault();
+    const { email, password, cpassword } = user;
+
+    const res = await fetch("/signUP", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email, password, cpassword
+      })
+    });
+    const data = await res.json();
+    if (data.status === 422 || !data) {
+      window.alert("Invalid Credentials")
+      console.log("galat")
+    }
+    else {
+      window.alert("Registration Successful")
+      console.log("galat")
+      navigate("/home")
+    }
   }
   return (
     <section class="h-100 gradient-form" style={{ backgroundColor: "#eee" }}>
@@ -28,7 +56,7 @@ export default function SignUp() {
                       <h4 class="mt-1 mb-5 pb-1"><b>VReqSL</b></h4>
                     </div>
 
-                    <form>
+                    <form method="POST">
                       <p style={{ fontSize: "150%", color: "#bdbdbd" }}>Create Account</p>
 
                       <div class="form-outline mb-4">
@@ -57,19 +85,18 @@ export default function SignUp() {
                       </div>
 
                       <div class="text-center pt-1 mb-5 pb-1">
-                      <NavLink to="/home">
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Sign Up</button>
-                      </NavLink>
-                        
+
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" onClick={PostData}>Sign Up</button>
+
                       </div>
 
                       <div class="d-flex align-items-center justify-content-center pb-4">
                         <p class="mb-0 me-2">Already have an account!</p>
 
                         <NavLink to="/">
-                          <button type="button" class="btn btn-outline-danger" style={{ marginLeft: "1rem" }}>Sign In</button>
+                          <button type="submit" class="btn btn-outline-danger" style={{ marginLeft: "1rem" }}>Sign In</button>
                         </NavLink>
-                        
+
                       </div>
 
                     </form>

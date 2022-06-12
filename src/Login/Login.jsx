@@ -1,12 +1,35 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export default function Login() {
+	let navigate = useNavigate()
 	const [user, setUser] = useState({
 		email: "",
 		password: "",
 	});
+	const loginUser = async (event) => {
+		event.preventDefault()
+		const { email, password } = user;
+		const res = await fetch('/', {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				email, password
+			})
+		});
+		const data = res.json()
+		if (res.status === 400 || !data) {
+			window.alert("Invalid Credentials");
+		}
+		else {
+			window.alert("Login Successful");
+			navigate("/home")
+		}
+	}
 	let name, value;
 	const handleInputs = (event) => {
 		name = event.target.name;
@@ -28,7 +51,7 @@ export default function Login() {
 											</h4>
 										</div>
 
-										<form>
+										<form method="POST">
 											<p style={{ fontSize: "200%" }}>Get Started</p>
 											<p style={{ fontSize: "150%", color: "#bdbdbd" }}>
 												Sign In
@@ -79,14 +102,14 @@ export default function Login() {
 												</button> */}
 
 											<div class="text-center pt-1 mb-5 pb-1">
-												<NavLink to="/home">
-													<button
-														class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 signIn_btn"
-														type="button"
-													>
-														Sign In
-													</button>
-												</NavLink>
+
+												<button
+													class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 signIn_btn"
+													type="button" onClick={loginUser}
+												>
+													Sign In
+												</button>
+
 
 												<a class="text-muted" href="#!">
 													Forgot password?
