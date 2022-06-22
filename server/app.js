@@ -8,7 +8,7 @@ const PORT = process.env.PORT;
 
 //const User = require('./userSchema')
 //DB CONNECTION
-const DB = process.env.DATABASE;
+const DB = process.env.DATABASE
 mongoose.connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
