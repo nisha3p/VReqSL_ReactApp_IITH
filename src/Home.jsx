@@ -4,14 +4,13 @@ import Login from "./Login/Login";
 import SignUp from "./Login/SignUP";
 import SideBar from "./SideBar";
 import Navbar from "./Navbar";
-import TableDemo from "./table"
 import AddOn from "./AddOn";
 import TrackBar from "./Trackbar";
 import Userstore from "./store/Userstore";
 import { observer } from "mobx-react";
-import JsonEditor from "./JsonEditor/JsonEditor";
+//import JsonEditor from "./JsonEditor/JsonEditor";
 import Table from "./Table/Table";
-
+import { useNavigate } from "react-router-dom";
 export default function Home() {
 	const navigate = useNavigate();
 	const callHomePage = async () => {
