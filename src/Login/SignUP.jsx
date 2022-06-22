@@ -9,7 +9,7 @@ import "./Login.css";
 export default function SignUp() {
   let navigate = useNavigate()
   const [user, setUser] = useState({
-    email: "", password: "", cpassword: ""
+    fname: "", org: "", email: "", password: "", cpassword: ""
   });
   let name, value;
   const handleInputs = (event) => {
@@ -20,7 +20,7 @@ export default function SignUp() {
 
   const PostData = async (event) => {
     event.preventDefault();
-    const { email, password, cpassword } = user;
+    const { fname, lname, org, email, password, cpassword } = user;
 
     const res = await fetch("/signUP", {
       method: "POST",
@@ -28,7 +28,7 @@ export default function SignUp() {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email, password, cpassword
+        fname, lname, org, email, password, cpassword
       })
     });
     const data = await res.json();
@@ -38,7 +38,6 @@ export default function SignUp() {
     }
     else {
       window.alert("Registration Successful")
-      console.log("galat")
       navigate("/home")
     }
   }
@@ -58,10 +57,31 @@ export default function SignUp() {
 
                     <form method="POST">
                       <p style={{ fontSize: "150%", color: "#bdbdbd" }}>Create Account</p>
+                      <div class="form-outline mb-4">
+
+                        <input type="text" id="form2Example11" class="form-control" placeholder="First Name" name="fname"
+                          value={user.fname}
+                          onChange={handleInputs} />
+
+                      </div>
+                      <div class="form-outline mb-4">
+
+                        <input type="text" id="form2Example12" class="form-control" placeholder="Last Name" name="lname"
+                          value={user.lname}
+                          onChange={handleInputs} />
+
+                      </div>
 
                       <div class="form-outline mb-4">
 
-                        <input type="email" id="form2Example11" class="form-control" placeholder="Email" name="email"
+                        <input type="text" id="form2Example13" class="form-control" placeholder="Organisation" name="org"
+                          value={user.org}
+                          onChange={handleInputs} />
+
+                      </div>
+                      <div class="form-outline mb-4">
+
+                        <input type="email" id="form2Example14" class="form-control" placeholder="Email" name="email"
                           value={user.email}
                           onChange={handleInputs} />
 
@@ -71,14 +91,14 @@ export default function SignUp() {
 
                       <div class="form-outline mb-4">
 
-                        <input type="password" id="form2Example13" class="form-control" placeholder="Password" name="password"
+                        <input type="password" id="form2Example15" class="form-control" placeholder="Password" name="password"
                           value={user.password}
                           onChange={handleInputs} />
 
                       </div>
 
                       <div class="form-outline mb-4">
-                        <input type="password" id="form2Example14" class="form-control" placeholder="Confirm Password" name="cpassword"
+                        <input type="password" id="form2Example16" class="form-control" placeholder="Confirm Password" name="cpassword"
                           value={user.cpassword}
                           onChange={handleInputs} />
 

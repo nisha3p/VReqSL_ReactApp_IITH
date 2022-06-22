@@ -1,29 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "./Card";
 import Login from "./Login/Login";
 import SignUp from "./Login/SignUP";
 import SideBar from "./SideBar";
 import Navbar from "./Navbar";
+import TableDemo from "./table"
 import AddOn from "./AddOn";
 import TrackBar from "./Trackbar";
 import Userstore from "./store/Userstore";
 import { observer } from "mobx-react";
+import async from "hbs/lib/async";
+import { type } from "@testing-library/user-event/dist/type";
+import { useNavigate } from "react-router-dom";
+//import { useHistory } from "react-router-dom"
 
 export default function Home() {
+	const navigate = useNavigate();
+	const callHomePage = async () => {
+		try {
+			const res = await fetch('/home', {
+				method: "GET",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				credentials: "include"
+			})
+			const data = await res.json;
+			if (!res.status === 200) {
+				const error = new Error(res.error);
+				throw error;
+				navigate('/');
+			}
+
+		} catch (err) {
+			console.log(err)
+			navigate('/');
+		}
+	}
+	useEffect(() => {
+		callHomePage();
+	}, []);
 	return (
-		// <div>
-		//   <div class="row">
-		//     <div class="col-lg-4 col-md-6 col-sm-12">
-		//         <Card img="https://previews.123rf.com/images/valentint/valentint1701/valentint170103243/69298593-settings-icon-settings-website-button-on-blue-low-poly-background-.jpg" content="SetUp"/>
-		//     </div>
-		//     <div class="col-lg-4 col-md-6 col-sm-12">
-		//         <Card img="https://previews.123rf.com/images/valentint/valentint1701/valentint170103243/69298593-settings-icon-settings-website-button-on-blue-low-poly-background-.jpg" content="All Product"/>
-		//     </div>
-		//     <div class="col-lg-4 col-md-6 col-sm-12">
-		//         <Card img="https://previews.123rf.com/images/valentint/valentint1701/valentint170103243/69298593-settings-icon-settings-website-button-on-blue-low-poly-background-.jpg" content="All Catalogue"/>
-		//     </div>
-		//   </div>
-		// </div>
+
 		<div>
 			<div id="viewport">
 				<SideBar />
@@ -36,26 +55,12 @@ export default function Home() {
 						<div class="content-area">
 							<Navbar title="Home" />
 							<TrackBar />
-							<div class="row">
-								<div class="col-lg-4 col-md-6 col-sm-12">
-									<Card
-										img="https://previews.123rf.com/images/valentint/valentint1701/valentint170103243/69298593-settings-icon-settings-website-button-on-blue-low-poly-background-.jpg"
-										content="SetUp"
-									/>
-								</div>
-								<div class="col-lg-4 col-md-6 col-sm-12">
-									<Card
-										img="https://previews.123rf.com/images/valentint/valentint1701/valentint170103243/69298593-settings-icon-settings-website-button-on-blue-low-poly-background-.jpg"
-										content="All Product"
-									/>
-								</div>
-								<div class="col-lg-4 col-md-6 col-sm-12">
-									<Card
-										img="https://previews.123rf.com/images/valentint/valentint1701/valentint170103243/69298593-settings-icon-settings-website-button-on-blue-low-poly-background-.jpg"
-										content="All Catalogue"
-									/>
-								</div>
+							<div>
+
+								{/* Table component below header */}
+								<TableDemo />
 							</div>
+
 						</div>
 					</div>
 				</div>

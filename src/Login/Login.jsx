@@ -127,6 +127,7 @@ export default function Login() {
 														Sign Up
 													</button>
 												</NavLink>
+
 											</div>
 										</form>
 									</div>

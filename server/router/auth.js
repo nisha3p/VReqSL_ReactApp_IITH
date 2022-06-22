@@ -5,7 +5,7 @@ const async = require('hbs/lib/async');
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt")
-
+const authenticate = require("../middleware/authenticate")
 
 //db
 const DB = process.env.DATABASE;
@@ -21,31 +21,12 @@ mongoose.connect(DB, {
 
 //userschema
 const User = require('../userSchema')
+//const People = require('../userSchemaSession')
 //
 /*router.get('/', (req, res) => {
     res.send(`Hello world from the server router js`)
 });*/
 
-/* Using promises
-router.post('/register', (req, res) => {
-    const { email, password, cpassword } = req.body;
-    if (!email || !password || !cpassword) {
-        return res.status(422).json({ error: "Please fill all the details" });
-    }
-    User.findOne({ email: email })
-        .then((userExist) => {
-            if (userExist) {
-                return res.status(422).json({ error: "Email already exist" });
-            }
-            const user = new User({ email, password, cpassword })
-            user.save().then(() => {
-                res.status(201).json({ message: "Registraion Successful" });
-            }).catch((err) => res.status(500).json({ error: "Registration failed" }));
-        }).catch(err => { console.log(err); });
-    //console.log(email);
-    //res.json({ message: req.body });
-
-});*/
 router.post('/signUP', async (req, res) => {
     const { email, password, cpassword } = req.body;
     if (!email || !password || !cpassword) {
@@ -108,5 +89,17 @@ router.post('/', async (req, res) => {
         console.log(err);
     }
 
+})
+
+//home page
+router.get('/home', authenticate, (req, res) => {
+    console.log("home");
+    res.send(req.rootUser);
+})
+//logout route
+router.get('/logout', (req, res) => {
+    console.log(`logout page`);
+    res.clearCookie('jwttoken', { path: '/' });
+    res.send('User')
 })
 module.exports = router; 

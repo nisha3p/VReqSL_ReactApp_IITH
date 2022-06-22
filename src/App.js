@@ -5,6 +5,7 @@ import SideBar from './SideBar';
 import Navbar from './Navbar';
 import AddOn from './AddOn';
 import Home from './Home';
+import Logout from './Login/Logout'
 import TrackBar from './Trackbar';
 import React from 'react';
 import Userstore from './store/Userstore';
@@ -63,6 +64,7 @@ export default function App() {
         <Route exact path="/" element={<Login />}/>
         <Route exact path="/signUP" element={<SignUp />}/>
 		<Route exact path="/home" element={<Home />}/>
+		<Route exact path="/logout" element={<Logout />}/>
       </Routes>
     </BrowserRouter>
   );
