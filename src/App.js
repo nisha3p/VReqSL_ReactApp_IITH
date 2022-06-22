@@ -64,7 +64,7 @@ export default function App() {
 				<Route exact path="/" element={<Login />} />
 				<Route exact path="/signUP" element={<SignUp />} />
 				<Route exact path="/home" element={<Home />} />
-
+				<Route exact path="/home/scene" element={<Scene />} />
 			</Routes>
 		</BrowserRouter>
 	);
