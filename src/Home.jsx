@@ -9,10 +9,8 @@ import AddOn from "./AddOn";
 import TrackBar from "./Trackbar";
 import Userstore from "./store/Userstore";
 import { observer } from "mobx-react";
-import async from "hbs/lib/async";
-import { type } from "@testing-library/user-event/dist/type";
-import { useNavigate } from "react-router-dom";
-//import { useHistory } from "react-router-dom"
+import JsonEditor from "./JsonEditor/JsonEditor";
+import Table from "./Table/Table";
 
 export default function Home() {
 	const navigate = useNavigate();
@@ -42,7 +40,6 @@ export default function Home() {
 		callHomePage();
 	}, []);
 	return (
-
 		<div>
 			<div id="viewport">
 				<SideBar />
@@ -55,12 +52,7 @@ export default function Home() {
 						<div class="content-area">
 							<Navbar title="Home" />
 							<TrackBar />
-							<div>
-
-								{/* Table component below header */}
-								<TableDemo />
-							</div>
-
+							<Table />
 						</div>
 					</div>
 				</div>

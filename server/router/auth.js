@@ -21,7 +21,7 @@ mongoose.connect(DB, {
 
 //userschema
 const User = require('../userSchema')
-//const People = require('../userSchemaSession')
+
 //
 /*router.get('/', (req, res) => {
     res.send(`Hello world from the server router js`)
@@ -37,7 +37,7 @@ router.post('/signUP', async (req, res) => {
         if (userExist) {
             return res.status(422).json({ error: "Email already exist" });
         }
-        else if (password != cpassword) {
+        else if (password !== cpassword) {
             return res.status(422).json({ error: "Password does not match" });
         }
         else {
