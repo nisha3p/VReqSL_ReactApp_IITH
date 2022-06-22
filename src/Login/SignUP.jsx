@@ -80,13 +80,14 @@ export default function SignUp() {
                       <div class="form-outline mb-4">
                         <input type="password" id="form2Example14" class="form-control" placeholder="Confirm Password" name="cpassword"
                           value={user.cpassword}
-                          onChange={handleInputs} />
+                          onChange={handleInputs}
+                         />
 
                       </div>
 
                       <div class="text-center pt-1 mb-5 pb-1">
 
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" onClick={PostData}>Sign Up</button>
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button"  onClick={PostData}  >Sign Up</button>
 
                       </div>
 

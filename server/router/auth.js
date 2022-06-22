@@ -21,31 +21,7 @@ mongoose.connect(DB, {
 
 //userschema
 const User = require('../userSchema')
-//
-/*router.get('/', (req, res) => {
-    res.send(`Hello world from the server router js`)
-});*/
 
-/* Using promises
-router.post('/register', (req, res) => {
-    const { email, password, cpassword } = req.body;
-    if (!email || !password || !cpassword) {
-        return res.status(422).json({ error: "Please fill all the details" });
-    }
-    User.findOne({ email: email })
-        .then((userExist) => {
-            if (userExist) {
-                return res.status(422).json({ error: "Email already exist" });
-            }
-            const user = new User({ email, password, cpassword })
-            user.save().then(() => {
-                res.status(201).json({ message: "Registraion Successful" });
-            }).catch((err) => res.status(500).json({ error: "Registration failed" }));
-        }).catch(err => { console.log(err); });
-    //console.log(email);
-    //res.json({ message: req.body });
-
-});*/
 router.post('/signUP', async (req, res) => {
     const { email, password, cpassword } = req.body;
     if (!email || !password || !cpassword) {
@@ -56,7 +32,7 @@ router.post('/signUP', async (req, res) => {
         if (userExist) {
             return res.status(422).json({ error: "Email already exist" });
         }
-        else if (password != cpassword) {
+        else if (password !== cpassword) {
             return res.status(422).json({ error: "Password does not match" });
         }
         else {

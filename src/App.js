@@ -10,6 +10,7 @@ import React from 'react';
 import Userstore from './store/Userstore';
 import {observer} from 'mobx-react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Scene from './Scene/Scene';
 
 function viewScreen(index)
 {
@@ -54,6 +55,7 @@ function viewScreen(index)
     
 }
 
+
 export default function App() {
   
 	return (
@@ -63,6 +65,7 @@ export default function App() {
         <Route exact path="/" element={<Login />}/>
         <Route exact path="/signUP" element={<SignUp />}/>
 		<Route exact path="/home" element={<Home />}/>
+		<Route exact path="/home/scene" element={<Scene />}/>
       </Routes>
     </BrowserRouter>
   );
