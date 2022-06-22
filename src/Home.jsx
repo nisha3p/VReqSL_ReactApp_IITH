@@ -9,6 +9,7 @@ import TrackBar from "./Trackbar";
 import Userstore from "./store/Userstore";
 import { observer } from "mobx-react";
 import JsonEditor from "./JsonEditor/JsonEditor";
+import Table from "./Table/Table";
 
 export default function Home() {
 	return (
@@ -24,7 +25,7 @@ export default function Home() {
 						<div class="content-area">
 							<Navbar title="Home" />
 							<TrackBar />
-							<JsonEditor />
+							<Table />
 						</div>
 					</div>
 				</div>

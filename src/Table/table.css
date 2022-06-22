@@ -1,0 +1,24 @@
+.first-btn{
+    height: 2rem;
+    background-color: burlywood;
+    border-radius: 10px;
+    border:none;
+    width: 25%;
+}
+
+.first-btn:hover{
+    opacity: 0.5;
+}
+
+.sec-btn{
+    height: 2rem;
+    background-color:darkgoldenrod;
+    border-radius: 10px;
+    margin-left: 15%;
+    border:none;
+    width: 25%;
+}
+
+.sec-btn:hover{
+    opacity: 0.5;
+}
