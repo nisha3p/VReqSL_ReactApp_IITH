@@ -73,7 +73,7 @@ export default function Login() {
 											</div>
 
 											<div class="form-outline mb-4">
-												<label class="form-label" for="form2Example11">
+												<label class="form-label" for="form2Example12">
 													Password :
 												</label>
 												<input

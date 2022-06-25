@@ -6,7 +6,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt")
 const authenticate = require("../middleware/authenticate")
-
+const cookieParser = require('cookie-parser')
 //db
 const DB = process.env.DATABASE;
 mongoose.connect(DB, {
@@ -21,15 +21,13 @@ mongoose.connect(DB, {
 
 //userschema
 const User = require('../userSchema')
-
+const Table = require('../tableschema')
 //
-/*router.get('/', (req, res) => {
-    res.send(`Hello world from the server router js`)
-});*/
+//ppl
 
 router.post('/signUP', async (req, res) => {
-    const { email, password, cpassword } = req.body;
-    if (!email || !password || !cpassword) {
+    const { fname, lname, org, email, password, cpassword } = req.body;
+    if (!fname || !lname || !org || !email || !password || !cpassword) {
         return res.status(422).json({ error: "Please fill all the details" });
     }
     try {
@@ -41,7 +39,7 @@ router.post('/signUP', async (req, res) => {
             return res.status(422).json({ error: "Password does not match" });
         }
         else {
-            const user = new User({ email, password, cpassword })
+            const user = new User({ fname, lname, org, email, password, cpassword })
             const userRegister = await user.save()
             if (userRegister) {
                 res.status(201).json({ message: "Registraion Successful" });
@@ -55,6 +53,8 @@ router.post('/signUP', async (req, res) => {
     }
 
 });
+
+
 
 //login route
 router.post('/', async (req, res) => {
@@ -96,6 +96,28 @@ router.get('/home', authenticate, (req, res) => {
     console.log("home");
     res.send(req.rootUser);
 })
+
+//table
+router.post('/home', authenticate, async (req, res) => {
+    console.log("data is " + req.body);
+
+    try {
+        const { project, owner, stage } = req.body;
+
+        if (!project || !owner || !stage) {
+            return res.status(422).json({ error: "Please fill all the details" });
+        }
+        const username = req.rootUser.email;
+        // const userid=User.findOne({_id:req.userID});
+        const table = new Table({ username, project, owner, stage })
+        const tableschema = await table.save()
+    }
+    catch (err) {
+        console.log(err);
+    }
+    //
+});
+
 //logout route
 router.get('/logout', (req, res) => {
     console.log(`logout page`);
