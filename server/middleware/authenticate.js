@@ -11,7 +11,7 @@ const authenticate = async (req, res, next) => {
         }
         req.token = token;
         req.rootUser = rootUser;
-        req.userID = router._id;
+        req.userID = rootUser._id;
         next();
     } catch (err) {
         res.status(401).send('Unauthorised: No tokens provided');

@@ -21,12 +21,13 @@ mongoose.connect(DB, {
 
 //userschema
 const User = require('../userSchema')
-const Table = require('../tableschema')
+// const Table = require('../tableschema')
 //
 //ppl
 
 router.post('/signUP', async (req, res) => {
     const { fname, lname, org, email, password, cpassword } = req.body;
+
     if (!fname || !lname || !org || !email || !password || !cpassword) {
         return res.status(422).json({ error: "Please fill all the details" });
     }
