@@ -8,9 +8,11 @@ import AddOn from "./AddOn";
 import TrackBar from "./Trackbar";
 import Userstore from "./store/Userstore";
 import { observer } from "mobx-react";
-//import JsonEditor from "./JsonEditor/JsonEditor";
-import Table from "./Table/Table";
+import JsonEditor from "./JsonEditor/JsonEditor";
 import { useNavigate } from "react-router-dom";
+
+import TableNS from "./Table/TableNS";
+
 export default function Home() {
 	const navigate = useNavigate();
 	const callHomePage = async () => {
@@ -45,13 +47,13 @@ export default function Home() {
 				<div id="content">
 					<div class="container-fluid">
 						<div class="above-navbar">
-							<span class="section-heading"> Cataloging </span>
+							<span class="section-heading"> Dashboard </span>
 							<AddOn />
 						</div>
 						<div class="content-area">
 							<Navbar title="Home" />
 							<TrackBar />
-							<Table />
+							<TableNS />
 						</div>
 					</div>
 				</div>

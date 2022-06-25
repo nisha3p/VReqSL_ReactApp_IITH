@@ -6,14 +6,14 @@ import SideBar from '../SideBar'
 import TrackBar from '../Trackbar'
 
 function Scene() {
-  return (
-    <div>
+	return (
+		<div>
 			<div id="viewport">
 				<SideBar />
 				<div id="content">
 					<div class="container-fluid">
 						<div class="above-navbar">
-							<span class="section-heading"> Cataloging </span>
+							<span class="section-heading">Scene </span>
 							<AddOn />
 						</div>
 						<div class="content-area">
@@ -25,7 +25,7 @@ function Scene() {
 				</div>
 			</div>
 		</div>
-  )
+	)
 }
 
 export default Scene

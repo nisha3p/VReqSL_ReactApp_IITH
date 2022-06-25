@@ -1,24 +1,25 @@
-.first-btn{
+.first-btn {
     height: 2rem;
     background-color: burlywood;
     border-radius: 10px;
-    border:none;
-    width: 25%;
+    border: none;
+    width: 100%;
+
 }
 
-.first-btn:hover{
+.first-btn:hover {
     opacity: 0.5;
 }
 
-.sec-btn{
+.sec-btn {
     height: 2rem;
-    background-color:darkgoldenrod;
+    background-color: darkgoldenrod;
     border-radius: 10px;
     margin-left: 15%;
-    border:none;
-    width: 25%;
+    border: none;
+    width: fit-content;
 }
 
-.sec-btn:hover{
+.sec-btn:hover {
     opacity: 0.5;
 }

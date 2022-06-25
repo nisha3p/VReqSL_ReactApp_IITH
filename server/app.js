@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const express = require('express');
+const cookieParser = require('cookie-parser')
 const app = express();
 dotenv.config({ path: './config.env' });
 //require('./db/conn');
@@ -18,6 +19,7 @@ mongoose.connect(DB, {
     console.log('connection successful');
 }).catch((err) => console.log(err));
 app.use(express.json());
+app.use(cookieParser());
 app.use(require('./router/auth'));
 app.listen(PORT, () => {
     console.log(`server is running at port no ${PORT}`)
