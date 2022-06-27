@@ -6,6 +6,8 @@ import "./table.css"
 
 function TableNS() {
     const [rowsData, setRowsData] = useState([]);
+    var row_index = -1;
+    const [rowInd, setId] = useState(-1);
 
     const addTableRows = () => {
 
@@ -14,7 +16,14 @@ function TableNS() {
             owner: '',
             stage: ''
         }
+        row_index++;
+        setId(rowInd + 1)
+        console.log("row_index = " + rowInd)
         setRowsData([...rowsData, rowsInput])
+
+        // row_index++
+        // setId(rowInd + 1)
+
 
     }
     const deleteTableRows = (index) => {
@@ -34,24 +43,24 @@ function TableNS() {
     }
 
 
-    const PostData = async (evnt) => {
+    // const PostData = async (evnt) => {
 
-        evnt.preventDefault();
-        const { project, owner, stage } = rowsData[0];
+    //     evnt.preventDefault();
+    //     const { project, owner, stage } = rowsData[0];
 
-        console.log(rowsData[0])
-        const res = await fetch("/home", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                project, owner, stage
-            })
-        })
+    //     console.log(rowsData[0])
+    //     const res = await fetch("/home", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         credentials: "include",
+    //         body: JSON.stringify({
+    //             project, owner, stage
+    //         })
+    //     })
 
-    }
+    // }
 
 
     // const data = await res.json();
@@ -77,18 +86,16 @@ function TableNS() {
                                 <th>Owner</th>
                                 <th>Stage</th>
                                 <th>Action</th>
+                                <th></th>
                                 <th><button className="btn btn-outline-success" onClick={addTableRows} >+</button></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <TableRows rowsData={rowsData} deleteTableRows={deleteTableRows} handleChange={handleChange} />
+                            <TableRows rowInd={rowInd} rowsData={rowsData} deleteTableRows={deleteTableRows} handleChange={handleChange} />
                         </tbody>
                     </table>
                 </div>
                 <div className="col-sm-4">
-                </div>
-                <div>
-                    <button onClick={PostData} >Save Changes</button>
                 </div>
             </div>
         </div>

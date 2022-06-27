@@ -52,7 +52,7 @@ export default function Home() {
 						</div>
 						<div class="content-area">
 							<Navbar title="Home" />
-							<TrackBar />
+
 							<TableNS />
 						</div>
 					</div>

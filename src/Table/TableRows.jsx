@@ -2,7 +2,30 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./table.css"
 
-function TableRows({ rowsData, deleteTableRows, handleChange }) {
+function TableRows({ rowInd, rowsData, deleteTableRows, handleChange }) {
+
+    const PostData = async (evnt) => {
+
+        evnt.preventDefault();
+        const { project, owner, stage } = rowsData[rowInd];
+
+        console.log("Row Index " + rowInd)
+        console.log(rowsData[rowInd])
+        console.log(rowsData)
+
+        const res = await fetch("/home", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                project, owner, stage
+            })
+        })
+
+    }
+
     return (
 
         rowsData.map((data, index) => {
@@ -22,6 +45,7 @@ function TableRows({ rowsData, deleteTableRows, handleChange }) {
                             </NavLink>
                         </div>
                     </td>
+                    <td ><button class="first-btn" style={{ backgroundColor: "green", color: "white" }} onClick={PostData}>Save</button></td>
                     <td><button className="btn btn-outline-danger" onClick={() => (deleteTableRows(index))}>x</button></td>
                 </tr>
             )
