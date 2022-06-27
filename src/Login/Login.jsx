@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { user_name, updateUser } from "../ValidUser";
 
 export default function Login() {
+
 	let navigate = useNavigate()
 	const [user, setUser] = useState({
 		email: "",
 		password: "",
 	});
+
 	const loginUser = async (event) => {
 		event.preventDefault()
 		const { email, password } = user;
@@ -21,21 +24,26 @@ export default function Login() {
 				email, password
 			})
 		});
+
 		const data = res.json()
 		if (res.status === 400 || !data) {
 			window.alert("Invalid Credentials");
 		}
 		else {
 			window.alert("Login Successful");
+			updateUser(email)
+			console.log("Valid User = " + user_name)
 			navigate("/home")
 		}
 	}
+
 	let name, value;
 	const handleInputs = (event) => {
 		name = event.target.name;
 		value = event.target.value;
 		setUser({ ...user, [name]: value });
 	};
+
 	return (
 		<section class="h-100 gradient-form" style={{ backgroundColor: "#eee" }}>
 			<div class="container py-6 h-100">

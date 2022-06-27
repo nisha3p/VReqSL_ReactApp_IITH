@@ -32,6 +32,7 @@ function TableRows({ rowInd, rowsData, deleteTableRows, handleChange }) {
             const { project, owner, stage } = data;
             return (
                 <tr key={index}>
+                    <td>67UI08</td>
                     <td>
                         <input type="text" value={project} onChange={(evnt) => (handleChange(index, evnt))} name="project" className="form-control" />
                     </td>

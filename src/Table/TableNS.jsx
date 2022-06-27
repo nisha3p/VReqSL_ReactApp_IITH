@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import async from "hbs/lib/async";
 import TableRows from "./TableRows"
 import "./table.css"
+import { useEffect } from "react";
+
+var axios = require('axios');
+var data = '';
 
 
 function TableNS() {
@@ -38,43 +42,55 @@ function TableNS() {
         rowsInput[index][name] = value;
         setRowsData(rowsInput);
 
-
-
     }
 
+    function populateRow(userProjObj) {
+        var userProj = userProjObj.projects;
+        var allData = [];
 
-    // const PostData = async (evnt) => {
+        console.log("population started")
+        userProj.map((proj) => {
+            console.log("Project Name : " + proj.project)
+            console.log("Project Owner : " + proj.owner)
 
-    //     evnt.preventDefault();
-    //     const { project, owner, stage } = rowsData[0];
+            const rowsInput = {
+                project: proj.project,
+                owner: proj.owner,
+                stage: proj.stage
+            }
 
-    //     console.log(rowsData[0])
-    //     const res = await fetch("/home", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         credentials: "include",
-    //         body: JSON.stringify({
-    //             project, owner, stage
-    //         })
-    //     })
+            allData.push(rowsInput)
+        })
 
-    // }
+        console.log("All data")
+        console.log(allData)
+        setId(allData.length - 1)
+        setRowsData(allData)
+    }
 
+    var config = {
+        method: 'get',
+        url: 'http://localhost:3000/home',
+        headers: {
+            'Content-Type': 'application/json',
+            'Cookie': 'jwttoken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmI3NThjODIxZjQ2MjBhN2M0MzVkZDkiLCJpYXQiOjE2NTYyNDAxMTd9.bp703CgfOZbcK0eGrtQ89RafOXSk6NOjFFYiJGYcjyI'
+        },
+        data: data
+    };
 
-    // const data = await res.json();
+    useEffect(() => {
+        axios(config)
+            .then(function (response) {
+                console.log(response.data);
+                console.log(typeof response.data)
+                console.log(typeof rowsData)
+                populateRow(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }, [])
 
-    // if ((data.status === 422 || !data)) {
-    //     window.alert("Invalid Credentials")
-    //     console.log("galat")
-    // }
-    // else {
-    //     window.alert("Registration Successful")
-    //     navigate("/home")
-    //}
-
-    //}
     return (
         <div className="container">
             <div className="row">
@@ -82,6 +98,7 @@ function TableNS() {
                     <table className="table">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Project Name</th>
                                 <th>Owner</th>
                                 <th>Stage</th>
