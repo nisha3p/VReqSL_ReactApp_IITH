@@ -23,3 +23,7 @@
 .sec-btn:hover {
     opacity: 0.5;
 }
+
+.hide-col-id {
+    display: none;
+}

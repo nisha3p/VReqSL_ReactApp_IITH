@@ -18,8 +18,10 @@ function TableNS() {
         const rowsInput = {
             project: '',
             owner: '',
-            stage: ''
+            stage: '',
+            id: ''
         }
+
         row_index++;
         setId(rowInd + 1)
         console.log("row_index = " + rowInd)
@@ -30,11 +32,13 @@ function TableNS() {
 
 
     }
+
     const deleteTableRows = (index) => {
         const rows = [...rowsData];
         rows.splice(index, 1);
         setRowsData(rows);
     }
+
     const handleChange = (index, evnt) => {
 
         const { name, value } = evnt.target;
@@ -56,7 +60,8 @@ function TableNS() {
             const rowsInput = {
                 project: proj.project,
                 owner: proj.owner,
-                stage: proj.stage
+                stage: proj.stage,
+                id: proj._id
             }
 
             allData.push(rowsInput)
@@ -64,6 +69,7 @@ function TableNS() {
 
         console.log("All data")
         console.log(allData)
+
         setId(allData.length - 1)
         setRowsData(allData)
     }
@@ -81,9 +87,9 @@ function TableNS() {
     useEffect(() => {
         axios(config)
             .then(function (response) {
-                console.log(response.data);
-                console.log(typeof response.data)
-                console.log(typeof rowsData)
+                // console.log(response.data);
+                // console.log(typeof response.data)
+                // console.log(typeof rowsData)
                 populateRow(response.data)
             })
             .catch(function (error) {
@@ -98,7 +104,7 @@ function TableNS() {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th class="hide-col-id">ID</th>
                                 <th>Project Name</th>
                                 <th>Owner</th>
                                 <th>Stage</th>

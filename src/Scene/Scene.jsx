@@ -8,6 +8,7 @@ import TrackBar from '../Trackbar'
 import StepProgressBar from 'react-step-progress';
 // import the stylesheet
 import 'react-step-progress/dist/index.css';
+import { isSceneErr } from '../ValidUser'
 
 
 
@@ -20,9 +21,21 @@ function Scene() {
 	const step4Content = <div></div>
 	const step5Content = <div></div>
 
+	function step1Validator() {
+
+		if (!isSceneErr) {
+			return false;
+		}
+
+		return true;
+	}
 	// setup step validators, will be called before proceeding to the next step
 	function step2Validator() {
 		// return a boolean
+		if (!isSceneErr) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -70,7 +83,8 @@ function Scene() {
 										label: 'SCENE VALIDATOR',
 
 										name: 'step 1',
-										content: step1Content
+										content: step1Content,
+										validator: step1Validator
 									},
 									{
 										label: 'ASSET VALIDATOR',
