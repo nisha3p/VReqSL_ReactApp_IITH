@@ -1,0 +1,25 @@
+{
+    "_scenename": "bowling alley",
+    "_sid": "AX24C67H",
+    "_slabel": "This is a text game",
+    "_scenearea": {
+        "#length": "20",
+        "#breadth": "20",
+        "#height": "20"
+    },
+    "_playarea": {
+        "#pid": "TH234OP",
+        "#length": "20",
+        "#breadth": "5",
+        "#height": "10"
+    },
+    "_camera": "true",
+    "_initialpos": {
+        "#x": "0",
+        "#y": "5",
+        "#z": "0"
+    },
+    "_horizon": "true",
+    "_dof": "6",
+    "_skybox": "false"
+}

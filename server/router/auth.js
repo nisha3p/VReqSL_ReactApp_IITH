@@ -21,9 +21,13 @@ mongoose.connect(DB, {
 
 //userschema
 const User = require('../userSchema')
-// const Table = require('../tableschema')
+const SceneJson = require('../jsonSchema')
+const sceneData = require('../resources/sceneJson.json')
+const sceneSchema = require('../resources/sceneSchema.json')
+const Table = require('../tableSchema');
 //
-//ppl
+
+//register api
 
 router.post('/signUP', async (req, res) => {
     const { fname, lname, org, email, password, cpassword } = req.body;
@@ -91,34 +95,65 @@ router.post('/', async (req, res) => {
     }
 
 })
-
-//home page
-router.get('/home', authenticate, (req, res) => {
-    console.log("home");
-    res.send(req.rootUser);
-})
-
 //table
 router.post('/home', authenticate, async (req, res) => {
-    console.log("data is " + req.body);
-
     try {
         const { project, owner, stage } = req.body;
-
         if (!project || !owner || !stage) {
             return res.status(422).json({ error: "Please fill all the details" });
         }
         const username = req.rootUser.email;
-        // const userid=User.findOne({_id:req.userID});
-        const table = new Table({ username, project, owner, stage })
+        const table = new Table({ project, owner, stage, username: username })
         const tableschema = await table.save()
+        if (tableschema) {
+            //scene json creation request
+            console.log(tableschema._id)
+            const sceneJson = new SceneJson({ data: sceneData, schema: sceneSchema, pId: tableschema._id })
+            const sceneJsoncreate = await sceneJson.save()
+            console.log(sceneJson);
+            res.status(201).json({ projectId: tableschema._id });
+        }
     }
     catch (err) {
         console.log(err);
+        res.status(500).json({ message: "Failed to create project" });
     }
-    //
+
 });
 
+//table get api
+router.get('/home', authenticate, async (req, res) => {
+    try {
+        const findUser = await Table.find({ username: req.rootUser.email })
+        if (findUser) {
+            res.status(201).json({ projects: findUser });
+        }
+        else {
+            res.status(201).json({ projects: [] });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Server error" });
+    }
+})
+
+
+//scene
+router.get('/home/scene/:id', authenticate, async (req, res) => {
+    try {
+        const projectDetails = await SceneJson.findOne({ pId: req.params.id });
+        if (projectDetails) {
+            res.status(201).json({ data: projectDetails.data, schema: projectDetails.schema });
+        }
+        else {
+            res.status(404).json({ message: "Project Not Found" });
+        }
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Project Not Found" });
+    }
+})
 //logout route
 router.get('/logout', (req, res) => {
     console.log(`logout page`);
