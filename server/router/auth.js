@@ -137,6 +137,26 @@ router.get('/home', authenticate, async (req, res) => {
     }
 })
 
+//delete
+router.delete('/home/:id', authenticate, async (req, res) => {
+    try {
+        console.log(req.params.id)
+        const deleteProject = await Table.deleteOne({ _id: req.params.id });
+        if (deleteProject) {
+            res.status(201).json({ message: "Deleted" });
+        }
+        else {
+            res.status(404).json({ message: "Error" });
+        }
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Project Not Found" });
+    }
+})
+
+
+
 
 //scene
 router.get('/home/scene/:id', authenticate, async (req, res) => {

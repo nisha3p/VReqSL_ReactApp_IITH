@@ -94,22 +94,21 @@ function Scene() {
 										validator: step2Validator
 									},
 									{
-										label: 'PROP VALIDATOR',
+										label: 'ACTION-RESPONSE DEFINE',
 
 										name: 'step 3',
 										content: step3Content,
 										validator: step3Validator
 									},
 									{
-										label: 'JS EDITOR',
+										label: 'CUSTOM SCRIPT LOGIC',
 
 										name: 'step 4',
 										content: step4Content,
 										validator: step4Validator
 									},
 									{
-										label: 'FINAL REVIEW',
-
+										label: 'EVENT TIMELINE',
 										name: 'step 5',
 										content: step5Content,
 										validator: step5Validator
